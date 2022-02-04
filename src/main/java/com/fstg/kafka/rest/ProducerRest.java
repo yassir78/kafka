@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProducerRest {
     @Autowired
     private ProducerService producerService;
+
     @GetMapping("/{firstName}/{lastName}")
     public void sendMessage(@PathVariable String firstName,@PathVariable String lastName){
         System.out.println("the message received is");

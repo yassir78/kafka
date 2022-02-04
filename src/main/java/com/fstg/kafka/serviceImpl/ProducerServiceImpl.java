@@ -13,8 +13,11 @@ public class ProducerServiceImpl implements ProducerService {
     private KafkaTemplate<String, User> kafkaTemplate;
     @Value(value = "${kafka.topicName}")
     private String topicName;
+
     @Override
-    public void sendMessage(String firstName,String lastName) {
-        this.kafkaTemplate.send(topicName,new User(firstName,lastName));
+    public void sendMessage(String firstName, String lastName) {
+        for (int i = 0; i < 10000; i++) {
+            this.kafkaTemplate.send(topicName, new User(firstName, lastName));
+        }
     }
 }
